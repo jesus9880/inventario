@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <title>Proveedores</title>
+
+    <style>
+      
+    </style>
+</head>
+<body>
+  <center><div class="w3-container w3-green">
+		<h1>Proveedores</h1>
+	  </div></center>
+
+  <div class="w3-container">
+    
+      <table class="w3-table w3-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+      </tbody>
+    </table>
+  </div>
+
+    <script>
+      let url = 'https://jsonplaceholder.typicode.com/users/';
+        fetch(url)
+            .then( response => response.json() )
+            .then( data => mostrarData(data) )
+            .catch( error => console.log(error) )
+
+        const mostrarData = (data) => {
+            console.log(data)
+            let body = ""
+            for (var i = 0; i < data.length; i++) {      
+               body+=`<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].email}</td></tr>`
+            }
+            document.getElementById('data').innerHTML = body
+            //console.log(body)
+        }
+    </script>
+    <center><div class="w3-bar w3-green">
+      
+      <form action="HomeAdmin.php" method="POST" class="w3-bar w3-teal">
+      <a href="HomeAdmin.php"  class="w3-button w3-green">salir</a>
+    
+    </div></center>
+</body>
+</html>
